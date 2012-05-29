@@ -38,7 +38,7 @@
    "provides" : {
       "Catmandu::Store::MongoDB" : {
          "file" : "lib/Catmandu/Store/MongoDB.pm",
-         "version" : "0.01"
+         "version" : "0.0101"
       },
       "Catmandu::Store::MongoDB::Bag" : {
          "file" : "lib/Catmandu/Store/MongoDB.pm",
@@ -51,5 +51,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.01"
+   "version" : "0.0101"
 }
