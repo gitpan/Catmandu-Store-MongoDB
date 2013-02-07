@@ -36,17 +36,9 @@
       }
    },
    "provides" : {
-      "Catmandu::FileStore::GridFS" : {
-         "file" : "lib/Catmandu/FileStore/GridFS.pm",
-         "version" : 0
-      },
-      "Catmandu::FileStore::GridFS::Bag" : {
-         "file" : "lib/Catmandu/FileStore/GridFS/Bag.pm",
-         "version" : 0
-      },
       "Catmandu::Store::MongoDB" : {
          "file" : "lib/Catmandu/Store/MongoDB.pm",
-         "version" : "0.02"
+         "version" : "0.0201"
       },
       "Catmandu::Store::MongoDB::Bag" : {
          "file" : "lib/Catmandu/Store/MongoDB/Bag.pm",
@@ -63,5 +55,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.02"
+   "version" : "0.0201"
 }

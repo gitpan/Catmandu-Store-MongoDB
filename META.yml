@@ -16,15 +16,9 @@ meta-spec:
   version: 1.4
 name: Catmandu-Store-MongoDB
 provides:
-  Catmandu::FileStore::GridFS:
-    file: lib/Catmandu/FileStore/GridFS.pm
-    version: 0
-  Catmandu::FileStore::GridFS::Bag:
-    file: lib/Catmandu/FileStore/GridFS/Bag.pm
-    version: 0
   Catmandu::Store::MongoDB:
     file: lib/Catmandu/Store/MongoDB.pm
-    version: 0.02
+    version: 0.0201
   Catmandu::Store::MongoDB::Bag:
     file: lib/Catmandu/Store/MongoDB/Bag.pm
     version: 0
@@ -38,4 +32,4 @@ requires:
   perl: v5.10.0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.02
+version: 0.0201

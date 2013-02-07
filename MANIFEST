@@ -1,7 +1,5 @@
 Build.PL
 Changes
-lib/Catmandu/FileStore/GridFS.pm
-lib/Catmandu/FileStore/GridFS/Bag.pm
 lib/Catmandu/Store/MongoDB.pm
 lib/Catmandu/Store/MongoDB/Bag.pm
 lib/Catmandu/Store/MongoDB/Searcher.pm
