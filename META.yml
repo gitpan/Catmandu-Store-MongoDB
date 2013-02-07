@@ -7,20 +7,29 @@ build_requires:
   Test::Exception: 0
   Test::More: 0
 configure_requires:
-  Module::Build: 0.38
+  Module::Build: 0.40
 dynamic_config: 1
-generated_by: 'Module::Build version 0.38, CPAN::Meta::Converter version 2.120921'
+generated_by: 'Module::Build version 0.4003, CPAN::Meta::Converter version 2.120921'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: Catmandu-Store-MongoDB
 provides:
+  Catmandu::FileStore::GridFS:
+    file: lib/Catmandu/FileStore/GridFS.pm
+    version: 0
+  Catmandu::FileStore::GridFS::Bag:
+    file: lib/Catmandu/FileStore/GridFS/Bag.pm
+    version: 0
   Catmandu::Store::MongoDB:
     file: lib/Catmandu/Store/MongoDB.pm
-    version: 0.0101
+    version: 0.02
   Catmandu::Store::MongoDB::Bag:
-    file: lib/Catmandu/Store/MongoDB.pm
+    file: lib/Catmandu/Store/MongoDB/Bag.pm
+    version: 0
+  Catmandu::Store::MongoDB::Searcher:
+    file: lib/Catmandu/Store/MongoDB/Searcher.pm
     version: 0
 requires:
   Catmandu: 0.01
@@ -29,4 +38,4 @@ requires:
   perl: v5.10.0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.0101
+version: 0.02

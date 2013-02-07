@@ -2,6 +2,7 @@ package Catmandu::Store::MongoDB;
 
 use Catmandu::Sane;
 use Moo;
+use Catmandu::Store::MongoDB::Bag;
 use MongoDB;
 
 with 'Catmandu::Store';
@@ -12,11 +13,11 @@ Catmandu::Store::MongoDB - A Catmandu::Store plugin for MongoDB databases
 
 =head1 VERSION
 
-Version 0.0101
+Version 0.02
 
 =cut
 
-our $VERSION = '0.0101';
+our $VERSION = '0.02';
 
 =head1 SYNOPSIS
 
@@ -94,67 +95,6 @@ sub BUILD {
     }
 }
 
-package Catmandu::Store::MongoDB::Bag;
-
-use Catmandu::Sane;
-use Moo;
-
-with 'Catmandu::Bag';
-
-has collection => (
-    is => 'ro',
-    init_arg => undef,
-    lazy => 1,
-    builder => '_build_collection',
-);
-
-sub _build_collection {
-    $_[0]->store->database->get_collection($_[0]->name);
-}
-
-sub generator {
-    my ($self) = @_;
-    sub {
-        state $cursor = $self->collection->find;
-        $cursor->next || return;
-    };
-}
-
-sub each {
-    my ($self, $sub) = @_;
-    my $cursor = $self->collection->find;
-    my $n = 0;
-    while (my $data = $cursor->next) {
-        $sub->($data);
-        $n++;
-    }
-    $n;
-}
-
-sub count {
-    $_[0]->collection->count;
-}
-
-sub get {
-    my ($self, $id) = @_;
-    $self->collection->find_one({_id => $id});
-}
-
-sub add {
-    my ($self, $data) = @_;
-    $self->collection->save($data, {safe => 1});
-}
-
-sub delete {
-    my ($self, $id) = @_;
-    $self->collection->remove({_id => $id}, {safe => 1});
-}
-
-sub delete_all {
-    my ($self) = @_;
-    $self->collection->remove({}, {safe => 1});
-}
-
 =head1 SEE ALSO
 
 L<Catmandu::Bag>, L<Catmandu::Searchable>
@@ -164,8 +104,6 @@ L<Catmandu::Bag>, L<Catmandu::Searchable>
 Nicolas Steenlant, C<< <nicolas.steenlant at ugent.be> >>
 
 =head1 LICENSE AND COPYRIGHT
-
-Copyright 2012 Ghent University Library
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of either: the GNU General Public License as published
