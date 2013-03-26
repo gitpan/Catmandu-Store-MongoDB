@@ -18,7 +18,7 @@ name: Catmandu-Store-MongoDB
 provides:
   Catmandu::Store::MongoDB:
     file: lib/Catmandu/Store/MongoDB.pm
-    version: 0.0201
+    version: 0.0202
   Catmandu::Store::MongoDB::Bag:
     file: lib/Catmandu/Store/MongoDB/Bag.pm
     version: 0
@@ -32,4 +32,4 @@ requires:
   perl: v5.10.0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.0201
+version: 0.0202
