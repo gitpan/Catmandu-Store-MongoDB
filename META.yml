@@ -1,5 +1,5 @@
 ---
-abstract: 'A Catmandu::Store plugin for MongoDB databases'
+abstract: 'A searchable sotre backed by MongoDB'
 author:
   - 'Nicolas Steenlant <nicolas.steenlant@ugent.be>'
 build_requires:
@@ -18,7 +18,7 @@ name: Catmandu-Store-MongoDB
 provides:
   Catmandu::Store::MongoDB:
     file: lib/Catmandu/Store/MongoDB.pm
-    version: 0.0202
+    version: 0.03
   Catmandu::Store::MongoDB::Bag:
     file: lib/Catmandu/Store/MongoDB/Bag.pm
     version: 0
@@ -27,9 +27,9 @@ provides:
     version: 0
 requires:
   Catmandu: 0.01
-  MongoDB: 0.42
-  Moo: 0.009011
-  perl: v5.10.0
+  MongoDB: 0.503003
+  Moo: 1.000008
+  perl: v5.10.1
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.0202
+version: 0.03
