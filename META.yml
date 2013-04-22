@@ -1,5 +1,5 @@
 ---
-abstract: 'A searchable sotre backed by MongoDB'
+abstract: 'A searchable store backed by MongoDB'
 author:
   - 'Nicolas Steenlant <nicolas.steenlant@ugent.be>'
 build_requires:
@@ -18,7 +18,7 @@ name: Catmandu-Store-MongoDB
 provides:
   Catmandu::Store::MongoDB:
     file: lib/Catmandu/Store/MongoDB.pm
-    version: 0.03
+    version: 0.0301
   Catmandu::Store::MongoDB::Bag:
     file: lib/Catmandu/Store/MongoDB/Bag.pm
     version: 0
@@ -32,4 +32,4 @@ requires:
   perl: v5.10.1
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.03
+version: 0.0301

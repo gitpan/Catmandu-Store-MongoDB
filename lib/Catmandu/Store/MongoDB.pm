@@ -9,15 +9,15 @@ with 'Catmandu::Store';
 
 =head1 NAME
 
-Catmandu::Store::MongoDB - A searchable sotre backed by MongoDB
+Catmandu::Store::MongoDB - A searchable store backed by MongoDB
 
 =head1 VERSION
 
-Version 0.03
+Version 0.0301
 
 =cut
 
-our $VERSION = '0.03';
+our $VERSION = '0.0301';
 
 =head1 SYNOPSIS
 
