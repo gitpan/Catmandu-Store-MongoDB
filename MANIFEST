@@ -10,3 +10,5 @@ META.json
 META.yml
 README
 t/00-load.t
+t/01-store.t
+t/lib/MongoDBTest.pm

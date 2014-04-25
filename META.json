@@ -4,7 +4,7 @@
       "Nicolas Steenlant <nicolas.steenlant@ugent.be>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4003, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Module::Build version 0.4205",
    "license" : [
       "perl_5"
    ],
@@ -23,7 +23,7 @@
       },
       "configure" : {
          "requires" : {
-            "Module::Build" : "0.40"
+            "Module::Build" : "0.42"
          }
       },
       "runtime" : {
@@ -38,15 +38,13 @@
    "provides" : {
       "Catmandu::Store::MongoDB" : {
          "file" : "lib/Catmandu/Store/MongoDB.pm",
-         "version" : "0.0301"
+         "version" : "0.0302"
       },
       "Catmandu::Store::MongoDB::Bag" : {
-         "file" : "lib/Catmandu/Store/MongoDB/Bag.pm",
-         "version" : 0
+         "file" : "lib/Catmandu/Store/MongoDB/Bag.pm"
       },
       "Catmandu::Store::MongoDB::Searcher" : {
-         "file" : "lib/Catmandu/Store/MongoDB/Searcher.pm",
-         "version" : 0
+         "file" : "lib/Catmandu/Store/MongoDB/Searcher.pm"
       }
    },
    "release_status" : "stable",
@@ -55,5 +53,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.0301"
+   "version" : "0.0302"
 }

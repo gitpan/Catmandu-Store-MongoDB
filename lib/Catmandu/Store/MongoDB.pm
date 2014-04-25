@@ -13,11 +13,11 @@ Catmandu::Store::MongoDB - A searchable store backed by MongoDB
 
 =head1 VERSION
 
-Version 0.0301
+Version 0.0302
 
 =cut
 
-our $VERSION = '0.0301';
+our $VERSION = '0.0302';
 
 =head1 SYNOPSIS
 
@@ -44,8 +44,15 @@ our $VERSION = '0.0301';
 
     # Search
     my $hits = $store->bag->search(query => '{"name":"Patrick"}');
-    my $hits = $store->bag->search(query => {name => "Patrick"});
+    my $hits = $store->bag->search(query => '{"name":"Patrick"}' , sort => { age => -1} );
+    my $hits = $store->bag->search(query => {name => "Patrick"} , start => 0 , limit => 100);
+    
+    my $next_page = $hits->next_page;
+    my $hits = $store->bag->search(query => '{"name":"Patrick"}' , page => $next_page);
+
     my $iterator = $store->bag->searcher(query => {name => "Patrick"});
+
+
 
 =head1 DESCRIPTION
 
@@ -55,9 +62,10 @@ Databases also have compartments (e.g. tables) called Catmandu::Bag-s.
 
 =head1 METHODS
 
-=head2 new(database_name => $name )
+=head2 new(database_name => $name , %opts )
 
-Create a new Catmandu::Store::MongoDB store with name $name.
+Create a new Catmandu::Store::MongoDB store with name $name. Optionally provide
+connection parameters (see MongoDB::MongoClient for possible options).
 
 =head2 bag($name)
 
@@ -106,7 +114,7 @@ sub BUILD {
 
 =head1 SEE ALSO
 
-L<Catmandu::Bag>, L<Catmandu::Searchable>
+L<Catmandu::Bag>, L<Catmandu::Searchable> , L<MongoDB::MongoClient>
 
 =head1 AUTHOR
 
