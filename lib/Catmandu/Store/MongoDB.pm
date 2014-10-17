@@ -17,7 +17,7 @@ Version 0.0302
 
 =cut
 
-our $VERSION = '0.0302';
+our $VERSION = '0.0303';
 
 =head1 SYNOPSIS
 
@@ -67,9 +67,22 @@ Databases also have compartments (e.g. tables) called Catmandu::Bag-s.
 Create a new Catmandu::Store::MongoDB store with name $name. Optionally provide
 connection parameters (see MongoDB::MongoClient for possible options).
 
+This module support to additional connection parameters:
+    
+    - connect_retry => NUM : connection's should be retried NUM times for success
+    - connect_retry_sleep => NUM : sleep NUM seconds after any connection failure
+
 =head2 bag($name)
 
 Create or retieve a bag with name $name. Returns a Catmandu::Bag.
+
+=head2 client
+
+Return the MongoDB::MongoClient instance.
+
+=head2 database
+
+Return a MongoDB::Database instance.
 
 =cut
 
@@ -92,12 +105,34 @@ my $CLIENT_ARGS = [qw(
     inflate_dbrefs
 )];
 
+has connect_retry        => (is => 'ro', default => sub { 0 } );
+has connect_retry_sleep  => (is => 'ro', default => sub { 1 } );
 has client        => (is => 'ro', lazy => 1, builder => '_build_client');
 has database_name => (is => 'ro', required => 1);
 has database      => (is => 'ro', lazy => 1, builder => '_build_database');
 
 sub _build_client {
-    MongoDB::MongoClient->new(delete $_[0]->{_args});
+    my $self  = shift;
+    my $retry = $self->connect_retry;
+    my $args  = delete $self->{_args};
+    my $host  = $self->{_args}->{host} // 'mongodb://localhost:27017';
+
+    do {
+        $self->log->debug("Connecting to $host");
+        my $client = eval { MongoDB::MongoClient->new($args) };
+        if ($@) {
+            die $@ unless $self->connect_retry;
+            $self->log->info("Can't connect to $host. Sleeping : " .
+                             $self->connect_retry_sleep .
+                             " seconds ($retry retries left)");
+            sleep $self->connect_retry_sleep;
+        }
+        else {
+           return $client;
+        }
+    } while (--$retry > 0);
+
+    Catmandu::Error->throw("Can't connect to $host");
 }
 
 sub _build_database {

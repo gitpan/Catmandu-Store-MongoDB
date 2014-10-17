@@ -1,33 +1,39 @@
 ---
 abstract: 'A searchable store backed by MongoDB'
 author:
-  - 'Nicolas Steenlant <nicolas.steenlant@ugent.be>'
+  - 'Nicolas Steenlant, C<< <nicolas.steenlant at ugent.be> >>'
 build_requires:
-  Software::License: '0'
-  Test::Exception: '0'
-  Test::More: '0'
+  Module::Build: '0.3601'
+  Software::License: '0.103010'
+  Test::Exception: '0.32'
+  Test::More: '1.001003'
+  Test::Pod: '0'
 configure_requires:
-  Module::Build: '0.42'
-dynamic_config: 1
-generated_by: 'Module::Build version 0.4205, CPAN::Meta::Converter version 2.140640'
+  Module::Build: '0.3601'
+dynamic_config: 0
+generated_by: 'Dist::Milla version v1.0.5, Dist::Zilla version 5.017, CPAN::Meta::Converter version 2.142690'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: '1.4'
 name: Catmandu-Store-MongoDB
-provides:
-  Catmandu::Store::MongoDB:
-    file: lib/Catmandu/Store/MongoDB.pm
-    version: '0.0302'
-  Catmandu::Store::MongoDB::Bag:
-    file: lib/Catmandu/Store/MongoDB/Bag.pm
-  Catmandu::Store::MongoDB::Searcher:
-    file: lib/Catmandu/Store/MongoDB/Searcher.pm
+no_index:
+  directory:
+    - t
+    - xt
+    - inc
+    - share
+    - eg
+    - examples
 requires:
-  Catmandu: '0.01'
-  MongoDB: '0.503003'
-  Moo: '1.000008'
+  Catmandu: '0.9205'
+  MongoDB: v0.705.0.0
+  Moo: '1.006000'
   perl: v5.10.1
 resources:
-  license: http://dev.perl.org/licenses/
-version: '0.0302'
+  bugtracker: https://github.com/LibreCat/Catmandu-Store-MongoDB/issues
+  homepage: https://github.com/LibreCat/Catmandu-Store-MongoDB
+  repository: https://github.com/LibreCat/Catmandu-Store-MongoDB.git
+version: '0.0303'
+x_contributors:
+  - 'Patrick Hochstenbach <patrick.hochstenbach@ugent.be>'
